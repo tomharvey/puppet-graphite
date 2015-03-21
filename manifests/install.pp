@@ -48,6 +48,11 @@ class graphite::install inherits graphite::params {
     }
   }
 
+  package { 'Django' :
+    ensure   => '1.4.19',
+    provider => undef, # default to package provider auto-discovery
+  }->
+
   package { $::graphite::params::graphitepkgs :
     ensure   => 'installed',
     provider => undef, # default to package provider auto-discovery
